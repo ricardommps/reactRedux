@@ -4,7 +4,7 @@ import consts from '../consts'
 
 export function login(values) {
 
-    return submit(values, `${consts.OAPI_URL}/login`)
+    return submit(values, `${consts.API_URL_PUBLIC}/login`)
 }
 
 export function signup(values) {
@@ -19,7 +19,7 @@ export function logout() {
 export function validateToken(token) {
     return dispatch => {
         if (token) {
-            axios.post(`${consts.OAPI_URL}/validateToken`, { token })
+            axios.post(`${consts.API_URL_PUBLIC}/validate`, { token })
                 .then(resp => {
                     dispatch({ type: 'TOKEN_VALIDATED', payload: resp.data.valid })
                 })
